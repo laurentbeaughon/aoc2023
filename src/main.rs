@@ -4,13 +4,19 @@ use std::fs;
 mod days {
     pub mod aocday;
     pub mod day1;
+    pub mod day2;
+    pub mod day3;
 }
 use crate::days::aocday::AOCDay;
 use crate::days::day1::DayOne;
+use crate::days::day2::DayTwo;
+use crate::days::day3::DayThree;
 
 fn day_to_problem(day: u8) -> Option<Box<dyn AOCDay>> {
     match day {
         1 => Some(Box::new(DayOne{})),
+        2 => Some(Box::new(DayTwo{})),
+        3 => Some(Box::new(DayThree{})),
         // ...
         _ => None
     }
