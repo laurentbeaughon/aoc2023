@@ -4,7 +4,7 @@ pub struct DayFour {}
 
 impl AOCDay for DayFour {
     fn part_one(&self, input: &str) -> String {
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let mut total_score: i32 = 0;
         for row in rows {
             let game: Vec<&str> = row.split(": ").collect();
@@ -35,8 +35,8 @@ impl AOCDay for DayFour {
     }
 
     fn part_two(&self, input: &str) -> String {
-        let rows = input.split("\n");
-        let mut final_cards: Vec<usize> = vec![1; 198];
+        let rows = input.split('\n');
+        let mut final_cards: Vec<usize> = vec![1; rows.clone().collect::<Vec<_>>().len()];
         let mut i: usize = 0;
         for row in rows {
             let game: Vec<&str> = row.split(": ").collect();
@@ -62,10 +62,7 @@ impl AOCDay for DayFour {
             let to_add: usize = final_cards[i];
             if score > 0 {
                 for j in i+1..i+score+1 {
-                    final_cards.get_mut(j).and_then(|value| {
-                        *value += to_add;
-                        Some(())
-                    });
+                    if let Some(value) = final_cards.get_mut(j) { *value += to_add; }
                 }
             }
             i += 1;

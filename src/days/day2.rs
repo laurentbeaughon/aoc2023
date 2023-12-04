@@ -6,12 +6,12 @@ use super::aocday::AOCDay;
 pub struct DayTwo {}
 
 fn is_valid(game: Vec<i32>) -> bool {
-    return game[0] <= 12 && game[1] <= 13 && game[2] <= 14;
+    game[0] <= 12 && game[1] <= 13 && game[2] <= 14
 }
 
 impl AOCDay for DayTwo {
     fn part_one(&self, input: &str) -> String {
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let regex = Regex::new(r"(:)(.*)").expect("failed to compile regex");
         let regex_red = Regex::new(r"(\d+)( red)").expect("failed to compile regex");
         let regex_blue = Regex::new(r"(\d+)( blue)").expect("failed to compile regex");
@@ -46,7 +46,7 @@ impl AOCDay for DayTwo {
     }
 
     fn part_two(&self, input: &str) -> String {
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let regex = Regex::new(r"(:)(.*)").expect("failed to compile regex");
         let regex_red = Regex::new(r"(\d+)( red)").expect("failed to compile regex");
         let regex_blue = Regex::new(r"(\d+)( blue)").expect("failed to compile regex");

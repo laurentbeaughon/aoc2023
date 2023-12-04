@@ -33,7 +33,7 @@ impl AOCDay for DayOne {
     fn part_one(&self, input: &str) -> String {
         let first_regex = Regex::new(r"^[a-z]*\d").expect("failed to compile regex");
         let last_regex = Regex::new(r"\d[a-z]*$").expect("failed to compile regex");
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let mut total: u32 = 0;
         for row in rows {
             let first = first_regex.find(row).map(|x| x.as_str()).unwrap().chars().collect::<Vec<char>>();
@@ -48,7 +48,7 @@ impl AOCDay for DayOne {
     fn part_two(&self, input: &str) -> String {
         let first_regex = Regex::new(r"(one|two|three|four|five|six|seven|eight|nine|\d)").expect("failed to compile regex");
         let last_regex = Regex::new(r"(?:.*)(one|two|three|four|five|six|seven|eight|nine|\d)").expect("failed to compile regex");
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let mut total: u32 = 0;
         for row in rows {
             let first = first_regex.captures(row).unwrap().get(0).unwrap().as_str();

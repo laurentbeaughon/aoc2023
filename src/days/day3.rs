@@ -6,7 +6,7 @@ use super::aocday::AOCDay;
 pub struct DayThree {}
 
 fn process_input(input: &str) -> Vec<(i32, i32)> {
-    let rows = input.split("\n");
+    let rows = input.split('\n');
     let char_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
     let mut symbols: Vec<(i32, i32)> = Vec::new();
     let mut i: i32 = 0;
@@ -22,13 +22,13 @@ fn process_input(input: &str) -> Vec<(i32, i32)> {
         }
         i += 1
     }
-    return symbols;
+    symbols
 }
 
 impl AOCDay for DayThree {
     fn part_one(&self, input: &str) -> String {
         let symbols = process_input(input);
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let regex = Regex::new(r"(\d+)").expect("failed to compile regex");
         let mut valid_numbers: Vec<i32> = Vec::new();
         let mut i: i32 = 0;
@@ -63,7 +63,7 @@ impl AOCDay for DayThree {
         for symbol in &symbols {
             hm.insert(symbol, Vec::new());
         }
-        let rows = input.split("\n");
+        let rows = input.split('\n');
         let regex = Regex::new(r"(\d+)").expect("failed to compile regex");
         let mut i: i32 = 0;
         for row in rows {
