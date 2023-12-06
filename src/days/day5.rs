@@ -17,7 +17,7 @@ fn step(start: u64, config: &Vec<Vec<u64>>) -> u64 {
         end = start;
     }
     //println!("{} {}", start, end);
-    return end
+    end
 }
 
 
@@ -33,14 +33,14 @@ fn step_back(start: u64, config: &Vec<Vec<u64>>) -> u64 {
         end = start;
     }
     //println!("{} {}", start, end);
-    return end
+    end
 }
 
 
 impl AOCDay for DayFive {
-    fn part_one(&self, input: &str) -> String {
-        let SEEDS: Vec<u64> = vec![194657215, 187012821, 1093203236, 6077151, 44187305, 148722449, 2959577030, 152281079, 3400626717, 198691716, 1333399202, 287624830, 2657325069, 35258407, 1913289352, 410917164, 1005856673, 850939, 839895010, 162018909]; 
-        let SEED_TO_SOIL: Vec<Vec<u64>> = vec![
+    fn part_one(&self, _input: &str) -> String {
+        let seeds: Vec<u64> = vec![194657215, 187012821, 1093203236, 6077151, 44187305, 148722449, 2959577030, 152281079, 3400626717, 198691716, 1333399202, 287624830, 2657325069, 35258407, 1913289352, 410917164, 1005856673, 850939, 839895010, 162018909]; 
+        let seed_to_soil: Vec<Vec<u64>> = vec![
             vec![466206721, 134904099, 264145987],
             vec![3226739510, 2500159633, 122177414],
             vec![1107118949, 4139510909, 155456387],
@@ -60,7 +60,7 @@ impl AOCDay for DayFive {
             vec![3707775417, 1148288480, 80518245],
             vec![4253797765, 1107118949, 41169531],
         ]; 
-        let SOIL_TO_FERT: Vec<Vec<u64>> = vec![
+        let soil_to_fert: Vec<Vec<u64>> = vec![
             vec![3913658055, 3217667557, 44136240],
             vec![3043638173, 1755409772, 387575354],
             vec![1214033686, 3261803797, 213545970],
@@ -70,7 +70,7 @@ impl AOCDay for DayFive {
             vec![1427579656, 2142985126, 379371842],
             vec![1806951498, 1568349931, 187059841],
         ];
-        let FERT_TO_WAT: Vec<Vec<u64>> = vec![
+        let fert_to_wat: Vec<Vec<u64>> = vec![
             vec![2553394045, 2097964132, 64191777],
             vec![3153687517, 3499502814, 665965431],
             vec![1104565830, 789107360, 151317021],
@@ -107,7 +107,7 @@ impl AOCDay for DayFive {
             vec![4148361226, 2571076300, 20607208],
             vec![1255882851, 988111799, 85457362],
         ];
-        let WAT_TO_LIGHT: Vec<Vec<u64>> = vec![
+        let wat_to_light: Vec<Vec<u64>> = vec![
             vec![3143216572, 2396957585, 46085818],
             vec![2930160319, 3087666064, 82806318],
             vec![3012966637, 3275730008, 11481558],
@@ -154,7 +154,7 @@ impl AOCDay for DayFive {
             vec![1572962693, 2176817252, 218201961],
             vec![1107869080, 1286102111, 11056030],
         ];
-        let LIGHT_TO_TEMP: Vec<Vec<u64>> = vec![
+        let light_to_temp: Vec<Vec<u64>> = vec![
             vec![1609050489, 2309171782, 372577802],
             vec![2023682469, 2836643763, 897111138],
             vec![834447570, 143604042, 411534753],
@@ -170,7 +170,7 @@ impl AOCDay for DayFive {
             vec![3036948483, 3775809079, 394329579],
             vec![2920793607, 2193016906, 116154876],
         ]; 
-        let TEMP_TO_HUM: Vec<Vec<u64>> = vec![
+        let temp_to_hum: Vec<Vec<u64>> = vec![
             vec![1348484361, 0, 45849582],
             vec![1394333943, 726347262, 166590764],
             vec![1797084784, 3346946555, 119105515],
@@ -200,7 +200,7 @@ impl AOCDay for DayFive {
             vec![3614557896, 4125858823, 169108473],
             vec![1065114718, 108561992, 98776847],
         ];
-        let HUM_TO_LOC: Vec<Vec<u64>> = vec![
+        let hum_to_loc: Vec<Vec<u64>> = vec![
             vec![440744287, 1133551978, 536306564],
             vec![4042633851, 4000620330, 37465866],
             vec![977050851, 1669858542, 136276424],
@@ -214,15 +214,15 @@ impl AOCDay for DayFive {
             vec![0, 1806134966, 198620952],
         ];
         let mut min_loc: u64 = 1000000000;
-        for start in &SEEDS {
+        for start in &seeds {
             let mut loc: u64 = *start;
-            loc = step(loc, &SEED_TO_SOIL);
-            loc = step(loc, &SOIL_TO_FERT);
-            loc = step(loc, &FERT_TO_WAT);
-            loc = step(loc, &WAT_TO_LIGHT);
-            loc = step(loc, &LIGHT_TO_TEMP);
-            loc = step(loc, &TEMP_TO_HUM);
-            loc = step(loc, &HUM_TO_LOC);
+            loc = step(loc, &seed_to_soil);
+            loc = step(loc, &soil_to_fert);
+            loc = step(loc, &fert_to_wat);
+            loc = step(loc, &wat_to_light);
+            loc = step(loc, &light_to_temp);
+            loc = step(loc, &temp_to_hum);
+            loc = step(loc, &hum_to_loc);
             if loc < min_loc {
                 min_loc = loc;
             }
@@ -230,8 +230,8 @@ impl AOCDay for DayFive {
         format!("{}", min_loc)
     }
 
-    fn part_two(&self, input: &str) -> String {
-        let SEEDS: Vec<Range<u64>> = vec![
+    fn part_two(&self, _input: &str) -> String {
+        let seeds: Vec<Range<u64>> = vec![
             194657215..194657215+187012821,
             1093203236..1093203236+6077151,
             44187305..44187305+148722449,
@@ -243,7 +243,7 @@ impl AOCDay for DayFive {
             1005856673..1005856673+850939,
             839895010..839895010+162018909
         ]; 
-        let SEED_TO_SOIL: Vec<Vec<u64>> = vec![
+        let seed_to_soil: Vec<Vec<u64>> = vec![
             vec![466206721, 134904099, 264145987],
             vec![3226739510, 2500159633, 122177414],
             vec![1107118949, 4139510909, 155456387],
@@ -263,7 +263,7 @@ impl AOCDay for DayFive {
             vec![3707775417, 1148288480, 80518245],
             vec![4253797765, 1107118949, 41169531],
         ]; 
-        let SOIL_TO_FERT: Vec<Vec<u64>> = vec![
+        let soil_to_fert: Vec<Vec<u64>> = vec![
             vec![3913658055, 3217667557, 44136240],
             vec![3043638173, 1755409772, 387575354],
             vec![1214033686, 3261803797, 213545970],
@@ -273,7 +273,7 @@ impl AOCDay for DayFive {
             vec![1427579656, 2142985126, 379371842],
             vec![1806951498, 1568349931, 187059841],
         ];
-        let FERT_TO_WAT: Vec<Vec<u64>> = vec![
+        let fert_to_wat: Vec<Vec<u64>> = vec![
             vec![2553394045, 2097964132, 64191777],
             vec![3153687517, 3499502814, 665965431],
             vec![1104565830, 789107360, 151317021],
@@ -310,7 +310,7 @@ impl AOCDay for DayFive {
             vec![4148361226, 2571076300, 20607208],
             vec![1255882851, 988111799, 85457362],
         ];
-        let WAT_TO_LIGHT: Vec<Vec<u64>> = vec![
+        let wat_to_light: Vec<Vec<u64>> = vec![
             vec![3143216572, 2396957585, 46085818],
             vec![2930160319, 3087666064, 82806318],
             vec![3012966637, 3275730008, 11481558],
@@ -357,7 +357,7 @@ impl AOCDay for DayFive {
             vec![1572962693, 2176817252, 218201961],
             vec![1107869080, 1286102111, 11056030],
         ];
-        let LIGHT_TO_TEMP: Vec<Vec<u64>> = vec![
+        let light_to_temp: Vec<Vec<u64>> = vec![
             vec![1609050489, 2309171782, 372577802],
             vec![2023682469, 2836643763, 897111138],
             vec![834447570, 143604042, 411534753],
@@ -373,7 +373,7 @@ impl AOCDay for DayFive {
             vec![3036948483, 3775809079, 394329579],
             vec![2920793607, 2193016906, 116154876],
         ]; 
-        let TEMP_TO_HUM: Vec<Vec<u64>> = vec![
+        let temp_to_hum: Vec<Vec<u64>> = vec![
             vec![1348484361, 0, 45849582],
             vec![1394333943, 726347262, 166590764],
             vec![1797084784, 3346946555, 119105515],
@@ -403,7 +403,7 @@ impl AOCDay for DayFive {
             vec![3614557896, 4125858823, 169108473],
             vec![1065114718, 108561992, 98776847],
         ];
-        let HUM_TO_LOC: Vec<Vec<u64>> = vec![
+        let hum_to_loc: Vec<Vec<u64>> = vec![
             vec![440744287, 1133551978, 536306564],
             vec![4042633851, 4000620330, 37465866],
             vec![977050851, 1669858542, 136276424],
@@ -419,15 +419,15 @@ impl AOCDay for DayFive {
         let mut min_loc: u64 = 50000000;
         let mut valid = false;
         while !valid {
-            let mut loc: u64 = step_back(min_loc, &HUM_TO_LOC);
-            loc = step_back(loc, &TEMP_TO_HUM);
-            loc = step_back(loc, &LIGHT_TO_TEMP);
-            loc = step_back(loc, &WAT_TO_LIGHT);
-            loc = step_back(loc, &FERT_TO_WAT);
-            loc = step_back(loc, &SOIL_TO_FERT);
-            loc = step_back(loc, &SEED_TO_SOIL);
+            let mut loc: u64 = step_back(min_loc, &hum_to_loc);
+            loc = step_back(loc, &temp_to_hum);
+            loc = step_back(loc, &light_to_temp);
+            loc = step_back(loc, &wat_to_light);
+            loc = step_back(loc, &fert_to_wat);
+            loc = step_back(loc, &soil_to_fert);
+            loc = step_back(loc, &seed_to_soil);
             min_loc += 1;
-            for range in &SEEDS {
+            for range in &seeds {
                 if range.contains(&loc) {
                     valid = true;
                 }

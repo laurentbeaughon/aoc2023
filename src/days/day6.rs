@@ -3,7 +3,7 @@ use super::aocday::AOCDay;
 pub struct DaySix {}
 
 impl AOCDay for DaySix {
-    fn part_one(&self, input: &str) -> String {
+    fn part_one(&self, _input: &str) -> String {
         let time: Vec<f32> = vec![54.0, 81.0, 70.0, 88.0];
         let distances: Vec<f32> = vec![446.0, 1292.0, 1035.0, 1007.0];
         let mut result: f32 = 1.0;
@@ -16,7 +16,7 @@ impl AOCDay for DaySix {
         format!("{}", result)
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn part_two(&self, _input: &str) -> String {
         let time: f64 = 54817088.0;
         let distances: f64 = 446129210351007.0;
         let delta: f64 = (time * time - 4.0 * distances).sqrt();
