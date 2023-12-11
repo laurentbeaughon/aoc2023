@@ -26,7 +26,7 @@ impl AOCDay for DayEight {
         }
         let mut pos: String = "AAA".to_string();
         let mut step: u32 = 0;
-        while pos != "ZZZ".to_string() {
+        while pos != *"ZZZ" {
             step += 1;
             let direction = cycle.next().unwrap();
             if direction == &'L' {
@@ -56,7 +56,7 @@ impl AOCDay for DayEight {
                     line.get(3).unwrap().as_str().to_string()
                 )
             );
-            if pos.chars().last().unwrap() == 'A' {
+            if pos.ends_with('A') {
                 positions.push(pos);
             }
         }
@@ -65,7 +65,7 @@ impl AOCDay for DayEight {
             let mut step: u64 = 0;
             let mut cycle = instructions.iter().cycle();
             let mut pos = position.clone();
-            while pos.chars().last().unwrap() != 'Z' {
+            while !pos.ends_with('Z') {
                 step += 1;
                 let direction = cycle.next().unwrap();
                 if direction == &'L' {

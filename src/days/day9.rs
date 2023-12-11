@@ -4,7 +4,7 @@ pub struct DayNine {}
 
 fn next_value(list: Vec<i32>) -> (i32, i32) {
     if list.iter().all(|&x| x == list[0]) {
-        return (list[0], list[0]);
+        (list[0], list[0])
     }
     else {
         let mut new_vec: Vec<i32> = Vec::new();
