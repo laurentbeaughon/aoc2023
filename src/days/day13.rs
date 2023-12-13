@@ -26,7 +26,7 @@ fn find_sym(rows: Vec<usize>, columns: Vec<usize>) -> usize {
             return i + 1
         }
     }
-    return 0
+    0
 }
 
 fn find_smog_sym(rows: Vec<usize>, columns: Vec<usize>) -> usize {
@@ -76,7 +76,7 @@ fn find_smog_sym(rows: Vec<usize>, columns: Vec<usize>) -> usize {
             return i + 1
         }
     }
-    return 0
+    0
 }
 
 

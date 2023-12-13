@@ -16,15 +16,15 @@ fn count_arrangements(records: Vec<char>, criteria: Vec<usize>, mut cache: HashM
     if let Some(&val) = cache.get(&RecordsCriteria {records: records.clone(), criteria: criteria.clone()}) {
         return (val, cache);
     }
-    if records.len() == 0 {
-        if criteria.len() == 0 {
+    if records.is_empty() {
+        if criteria.is_empty() {
             return (1, cache);
         }
         else {
             return (0, cache);
         }
     }
-    if criteria.len() == 0 {
+    if criteria.is_empty() {
         if records.contains(&'#') {
             return (0, cache)
         }
@@ -52,7 +52,7 @@ fn count_arrangements(records: Vec<char>, criteria: Vec<usize>, mut cache: HashM
         }
     }
     cache.insert(RecordsCriteria {records: records.clone(), criteria: criteria.clone()}, result);
-    return (result, cache)
+    (result, cache)
 
 }
 
