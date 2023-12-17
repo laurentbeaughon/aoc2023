@@ -41,7 +41,7 @@ fn energized(grid: Vec<Vec<char>>, mut pos: (usize, usize), direction: char, mut
         },
     };
     while pos.0 > 0 && pos.0 <= grid.len() && pos.1 > 0 && pos.1 <= grid[0].len() {
-        let mut visit: Vec<char> = visited.entry(pos).or_insert(Vec::new()).clone();
+        let mut visit: Vec<char> = visited.entry(pos).or_default().clone();
         if visit.contains(&direction) {
             return visited;
         }

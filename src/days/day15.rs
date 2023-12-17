@@ -11,7 +11,7 @@ fn hash_(word: &str) -> usize {
     for c in chars {
         hash += c as usize;
         hash *= 17;
-        hash = hash % 256;
+        hash %= 256;
     }
     hash
 }
@@ -35,7 +35,7 @@ impl AOCDay for DayFifteen {
             if chars.contains(&'-') {
                 let text: &str = &word[..word.len() - 1];
                 let hash: usize = hash_(text);
-                let mut tmp_vec: Vec<(&str, usize)> = (*boxes.entry(hash).or_insert(Vec::new())).to_vec();
+                let mut tmp_vec: Vec<(&str, usize)> = (*boxes.entry(hash).or_default()).to_vec();
                 tmp_vec.retain(|&(key, _)| key != text);
                 boxes.insert(hash, tmp_vec);
             }
@@ -44,7 +44,7 @@ impl AOCDay for DayFifteen {
                 let (text, value) = word.split_at(i);
                 let value_int = value.trim_start_matches('=').parse::<usize>().unwrap();
                 let hash: usize = hash_(text);
-                let mut tmp_vec: Vec<(&str, usize)> = (*boxes.entry(hash).or_insert(Vec::new())).to_vec();
+                let mut tmp_vec: Vec<(&str, usize)> = (*boxes.entry(hash).or_default()).to_vec();
                 if let Some(index) = tmp_vec.iter().position(|(key, _)| key == &text) {
                     tmp_vec[index] = (text, value_int);
                 }
