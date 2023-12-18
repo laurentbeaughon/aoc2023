@@ -20,6 +20,7 @@ mod days {
     pub mod day15;
     pub mod day16;
     pub mod day17;
+    pub mod day18;
 }
 use crate::days::aocday::AOCDay;
 use crate::days::day1::DayOne;
@@ -39,6 +40,7 @@ use crate::days::day14::DayFourteen;
 use crate::days::day15::DayFifteen;
 use crate::days::day16::DaySixteen;
 use crate::days::day17::DaySeventeen;
+use crate::days::day18::DayEighteen;
 
 fn day_to_problem(day: u8) -> Option<Box<dyn AOCDay>> {
     match day {
@@ -59,6 +61,7 @@ fn day_to_problem(day: u8) -> Option<Box<dyn AOCDay>> {
         15 => Some(Box::new(DayFifteen{})),
         16 => Some(Box::new(DaySixteen{})),
         17 => Some(Box::new(DaySeventeen{})),
+        18 => Some(Box::new(DayEighteen{})),
         // ...
         _ => None
     }
